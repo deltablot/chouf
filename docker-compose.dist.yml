@@ -3,6 +3,29 @@ services:
     image: deltablot/chouf
     container_name: chouf
     environment:
+      # SMTP CONFIGURATION
+
+      # required: smtp server domain name
+      - CHOUF_SMTP_HOSTNAME=
+
+      # required: smtp login
+      - CHOUF_SMTP_LOGIN=
+
+      # required: smtp password
+      - CHOUF_SMTP_PASSWORD=
+
+      # required: "From:" email address
+      - CHOUF_SMTP_FROM=
+
+      # required: email address to send alerts to
+      - CHOUF_SMTP_TO=
+
+      # optional: smtp port
+      # default: 587
+      #- CHOUF_SMTP_PORT=587
+
+      # END SMTP CONFIGURATION
+
       # optional: set config file path
       # default: /etc/chouf/config.yml
       # example: /etc/chouf/my-config.yml
