@@ -1,0 +1,25 @@
+{{define "index"}}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>chouf</title>
+  </head>
+
+  <body>
+    <div class='container d-flex align-self-center justify-content-center flex-wrap'>
+      {{ range .Results }}
+        {{ $status := "" }}
+        {{ if .Ok }} {{ $status = "ok" }} {{ else }} {{ $status = "ko" }} {{ end }}
+          <div class='flex-md-row site m-1 p-2' data-domain='{{ .Domain }}' data-status='{{ $status }}'>
+            <span class='domain'>{{ .Domain }}</span>
+        </div>
+      {{ end }}
+    </div>
+
+    <footer id='f' class='mt-2 p-2 text-center'>
+      chouf version: {{ .Version }} | page generated at {{ .PageTime }}
+    </footer>
+    <script src='js'></script>
+  </body>
+</html>
+{{end}}

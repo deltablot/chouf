@@ -1,0 +1,5 @@
+bin/
+config.yml
+docker-compose.yml
+node_modules/
+assets/*.bundle*

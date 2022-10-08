@@ -1,0 +1,64 @@
+services:
+  chouf:
+    image: deltablot/chouf
+    container_name: chouf
+    environment:
+      # optional: set config file path
+      # default: /etc/chouf/config.yml
+      # example: /etc/chouf/my-config.yml
+      #- CHOUF_CONFIG=/etc/chouf/config.yml
+
+      # optional: set debug mode
+      # default: false
+      # available values: true, false
+      #- CHOUF_DEBUG=false
+
+      # optional: set the default endpoint where requests will be made
+      # default: /
+      # example: /healthcheck
+      # note: individual site configuration can still override this
+      #- CHOUF_DEFAULT_ENDPOINT=/
+
+      # optional: set the default port on which chouf server is listening
+      # default: 3003
+      # example: 3333
+      # possible values: a number between 1000 and 65535
+      #- CHOUF_PORT=3003
+
+      # optional: set the default status code
+      # default: 200
+      # example: 204
+      # possible values: any HTTP Status code
+      # note: individual site configuration can still override this
+      #- CHOUF_DEFAULT_STATUS=200
+
+      # optional: set the default status code
+      # default: 5m
+      # example: 10m
+      # possible values: a valid go duration string
+      # note: individual site configuration can still override this
+      #- CHOUF_DEFAULT_INTERVAL=5m
+
+      # optional: set dev or prod env
+      # default: prod
+      # available values: prod, dev
+      #- CHOUF_ENV=prod
+
+      # optional: set number of workers
+      # default: 10
+      # possible values: a number between 1 and the max int value
+      #- CHOUF_WORKERS=10
+    volumes:
+      - .:/etc/chouf
+    ports:
+      - "3003:3003"
+    # use expose directive instead of "ports" if you do not wish to expose it to the world
+    # (for instance if you use a reverse proxy in front)
+    #expose:
+    #  - 3003
+    # settings below should not be modified
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true

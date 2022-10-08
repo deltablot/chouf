@@ -1,0 +1,35 @@
+---
+# chouf configuration file example
+# https://github.com/deltablot/chouf
+#
+# Copy this to config.yml and use -c flag to point to it
+
+# optional: config
+# configuration options for the program
+config:
+  # default interval between checks
+  # example: 45s
+  tick: 5m
+  # default number of workers to spawn
+  # example: 10
+  workers: 5
+
+# optional: defaults
+# set here the default options for every site
+defaults:
+  # default success status
+  # example: 204
+  status: 200
+  # default endpoint
+  # example: /healthcheck
+  endpoint: /
+
+# required: inventory
+# list of sites to hit
+inventory:
+  - name: example A
+    domain: a.example.org
+  - name: example B
+    domain: b.example.org
+    status: 404
+    endpoint: /not-found

@@ -1,0 +1,32 @@
+/**
+ * CSS code for chouf
+ * author: Nicolas CARPi
+ * copyright: 2022
+ * license: MIT
+ * repo: https://github.com/deltablot/chouf
+ */
+body {
+  background-color: #202224;
+  color: #fff;
+}
+[data-status="ok"] {
+    background-color: green;
+}
+[data-status="ko"] {
+    background-color: red;
+}
+.site {
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+.site:hover {
+  background-color: #696969;
+  transition-duration: 200ms;
+}
+
+footer {
+  width: 100%;
+  font-size: 0.8em;
+  margin: 0 auto;
+}
+
