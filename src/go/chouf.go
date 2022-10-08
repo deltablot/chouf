@@ -86,8 +86,6 @@ type App struct {
 
 func (app *App) init() {
 
-	fmt.Println(app)
-
 	// adjust app with values from yml
 	yml, err := readConfigFile(app.configPath)
 	if err != nil {
@@ -256,12 +254,6 @@ loop:
 			}
 			// loop the existing results and send an email if there is a change of state
 			for _, site := range getResults() {
-				/*
-					if site.Ok == false {
-						Debug(site.Domain)
-						Debug(result.Domain)
-					}
-				*/
 				if result.Domain == site.Domain && result.Ok != site.Ok {
 					Debug("sending email")
 					sendEmail(result)
