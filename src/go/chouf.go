@@ -17,9 +17,9 @@ import (
 	"log"
 	"net/http"
 	"net/smtp"
+	"net/url"
 	"os"
 	"os/signal"
-	"path"
 	"sync"
 	"syscall"
 	"text/template"
@@ -398,8 +398,10 @@ func process(website Website) Result {
 	}
 
 	Debug(fmt.Sprintf("chouf: debug: expecting %d on %s", status, endpoint))
-	// in 1.19, use net/url.JoinPath?
-	url := fmt.Sprint("https://", path.Join(website.Domain, endpoint))
+	url, err := url.JoinPath("https://", website.Domain, endpoint)
+	if err != nil {
+		log.Printf("chouf: error: could not assemble url: %s", err)
+	}
 	client := &http.Client{}
 	req, err := http.NewRequest("HEAD", url, nil)
 	if err != nil {
