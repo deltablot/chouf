@@ -15,7 +15,7 @@ COPY --chown=node:node src src
 RUN ls -la .
 RUN npm ci && npm run build:prod
 
-FROM golang:1.18-alpine AS gobuilder
+FROM golang:1.20-alpine AS gobuilder
 # this is set at build time
 ARG VERSION=docker
 WORKDIR /app
